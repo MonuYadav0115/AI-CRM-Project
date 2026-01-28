@@ -1,0 +1,109 @@
+/* LogInteractionScreen.css */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  color: #333;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input.interaction-input {
+  width: 300px;
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button.interaction-button {
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.interaction-button:hover {
+  background-color: #45a049;
+}
+
+table.interactions-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+table.interactions-table th,
+table.interactions-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+table.interactions-table th {
+  background-color: #f2f2f2;
+}
+
+table.interactions-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+/* Sentiment badges */
+.badge {
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Positive */
+.badge.positive {
+  background-color: #4caf50; /* green */
+}
+
+/* Negative */
+.badge.negative {
+  background-color: #f44336; /* red */
+}
+
+/* Neutral */
+.badge.neutral {
+  background-color: #9e9e9e; /* gray */
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.badge.positive {
+  background-color: green;
+}
+
+.badge.negative {
+  background-color: red;
+}
+
+.badge.neutral {
+  background-color: gray;
+}
