@@ -7,13 +7,13 @@ from tools import analyze_interaction
 import models
 from fastapi.middleware.cors import CORSMiddleware  # <- add this
 
-# Create database tables
+
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# --- Add CORS middleware ---
-origins = ["http://localhost:5173"]  # Frontend URL
+
+origins = ["http://localhost:5173"]  
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,7 +23,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- DB Dependency ---
 def get_db():
     db = SessionLocal()
     try:
@@ -31,7 +30,6 @@ def get_db():
     finally:
         db.close()
 
-# --- Existing backend routes ---
 @app.post("/log-interaction")
 def log_interaction(data: Interaction, db: Session = Depends(get_db)):
     ai_result = analyze_interaction(data.text)
@@ -52,13 +50,13 @@ def log_interaction(data: Interaction, db: Session = Depends(get_db)):
 def get_interactions(db: Session = Depends(get_db)):
     return db.query(InteractionModel).all()
 
-# --- Test route for frontend integration ---
+
 @app.get("/api/message")
 def get_message():
     return {"message": "Hello from FastAPI backend!"}
 
 
-# deleted code start 
+
 @app.delete("/interactions")
 def delete_all_interactions(db: Session = Depends(get_db)):
     db.query(InteractionModel).delete()

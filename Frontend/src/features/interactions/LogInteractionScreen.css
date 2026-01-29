@@ -1,4 +1,4 @@
-/* LogInteractionScreen.css */
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -63,7 +63,7 @@ table.interactions-table tr:nth-child(even) {
 }
 
 
-/* Sentiment badges */
+
 .badge {
   padding: 5px 12px;
   border-radius: 12px;
@@ -74,19 +74,19 @@ table.interactions-table tr:nth-child(even) {
   text-align: center;
 }
 
-/* Positive */
+
 .badge.positive {
-  background-color: #4caf50; /* green */
+  background-color: #4caf50; 
 }
 
-/* Negative */
+
 .badge.negative {
-  background-color: #f44336; /* red */
+  background-color: #f44336; 
 }
 
-/* Neutral */
+
 .badge.neutral {
-  background-color: #9e9e9e; /* gray */
+  background-color: #9e9e9e; 
 }
 
 .badge {

@@ -8,7 +8,7 @@ export default function LogInteractionScreen() {
 
   const backendUrl = "http://127.0.0.1:8000";
 
-  // Load data on page load
+
   useEffect(() => {
     fetch(`${backendUrl}/api/message`)
       .then((res) => res.json())
@@ -18,7 +18,7 @@ export default function LogInteractionScreen() {
     fetchInteractions();
   }, []);
 
-  // Fetch all interactions
+ 
   const fetchInteractions = () => {
     fetch(`${backendUrl}/interactions`)
       .then((res) => res.json())
@@ -26,7 +26,7 @@ export default function LogInteractionScreen() {
       .catch(console.error);
   };
 
-  // Submit interaction
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!text.trim()) return;
@@ -47,7 +47,6 @@ export default function LogInteractionScreen() {
     }
   };
 
-  // Delete all interactions
   const deleteAllInteractions = async () => {
     if (!window.confirm("Delete all interaction history?")) return;
 
