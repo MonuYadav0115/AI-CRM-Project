@@ -53,7 +53,7 @@ def get_interactions(db: Session = Depends(get_db)):
 
 @app.get("/api/message")
 def get_message():
-    return {"message": "Hello from FastAPI backend!"}
+    return {"message": ""}
 
 
 
