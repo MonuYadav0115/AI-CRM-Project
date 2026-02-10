@@ -1,13 +1,13 @@
 # AI-First CRM – HCP Interaction Module
 
-## 📌 Overview
+##  Overview
 This project is an AI-first CRM module designed for Life Sciences field representatives to log and analyze interactions with Healthcare Professionals (HCPs).
 
 The system supports structured interaction logging and AI-powered summarization using LLMs.
 
 ---
 
-## 🧱 Tech Stack
+##  Tech Stack
 
 ### Frontend
 - React
@@ -28,7 +28,7 @@ The system supports structured interaction logging and AI-powered summarization 
 
 ---
 
-## 🧠 LangGraph AI Agent
+##  LangGraph AI Agent
 
 The LangGraph agent manages the full lifecycle of HCP interactions:
 - Accepts raw interaction text
@@ -38,7 +38,7 @@ The LangGraph agent manages the full lifecycle of HCP interactions:
 
 ---
 
-## 🛠️ LangGraph Tools (5)
+##  LangGraph Tools (5)
 
 1. **Log Interaction Tool**
    - Stores HCP interaction data
@@ -58,7 +58,7 @@ The LangGraph agent manages the full lifecycle of HCP interactions:
 
 ---
 
-## 🖥️ Frontend Features
+##  Frontend Features
 
 - Log Interaction Screen
 - Structured form for interaction input
@@ -67,7 +67,7 @@ The LangGraph agent manages the full lifecycle of HCP interactions:
 
 ---
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 ### POST /log-interaction
 Logs a new HCP interaction with AI summary and sentiment.
@@ -77,7 +77,7 @@ Fetches all logged interactions.
 
 ---
 
-## ▶️ How to Run
+##  How to Run
 
 ### Backend
 ```bash

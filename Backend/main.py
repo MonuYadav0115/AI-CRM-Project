@@ -1,28 +1,29 @@
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
+from fastapi.middleware.cors import CORSMiddleware
+
+
 from database import SessionLocal, engine
-from models import InteractionModel
-from schemas import Interaction
-from tools import analyze_interaction
 import models
-from fastapi.middleware.cors import CORSMiddleware  # <- add this
+from models import InteractionModel
+from schemas import Interaction, InteractionResponse
+from tools import analyze_interaction
 
-
+# Create tables
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+app = FastAPI(title="CRM Backend")
 
-
-origins = ["http://localhost:5173"]  
-
+# CORS (React frontend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# DB dependency
 def get_db():
     db = SessionLocal()
     try:
@@ -30,33 +31,29 @@ def get_db():
     finally:
         db.close()
 
-@app.post("/log-interaction")
+# Log interaction
+@app.post("/log-interaction", response_model=InteractionResponse)
 def log_interaction(data: Interaction, db: Session = Depends(get_db)):
     ai_result = analyze_interaction(data.text)
 
-    new_interaction = InteractionModel(
+    interaction = InteractionModel(
         text=data.text,
         summary=ai_result["summary"],
-        sentiment=ai_result["sentiment"]
+        sentiment=ai_result["sentiment"],
     )
 
-    db.add(new_interaction)
+    db.add(interaction)
     db.commit()
-    db.refresh(new_interaction)
+    db.refresh(interaction)
 
-    return new_interaction
+    return interaction
 
-@app.get("/interactions")
+# Get all interactions
+@app.get("/interactions", response_model=list[InteractionResponse])
 def get_interactions(db: Session = Depends(get_db)):
     return db.query(InteractionModel).all()
 
-
-@app.get("/api/message")
-def get_message():
-    return {"message": ""}
-
-
-
+# Delete all interactions
 @app.delete("/interactions")
 def delete_all_interactions(db: Session = Depends(get_db)):
     db.query(InteractionModel).delete()
