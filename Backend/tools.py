@@ -2,6 +2,9 @@ import os
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 
+
+
+
 load_dotenv()
 
 # Load and clean API key
